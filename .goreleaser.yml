@@ -5,11 +5,14 @@ before:
     # you may remove this if you don't use vgo
     - go mod download
 builds:
-- env:
+-
+  env:
   - CGO_ENABLED=0
-- ldflags:
+
+  ldflags:
   - -s -w -X main.version={{.Version}} -X main.hash={{.ShortCommit}} -X main.builddate={{.Date}} -X main.goversion={{.Env.GOVERSION}}
-- goos:
+
+  goos:
   - linux
   - netbsd
   - darwin
