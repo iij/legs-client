@@ -16,6 +16,8 @@ builds:
   - linux
   - netbsd
   - darwin
+
+  binary: legsc
 archives:
 - replacements:
     darwin: Darwin
