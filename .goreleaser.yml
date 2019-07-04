@@ -18,6 +18,12 @@ builds:
   - darwin
 
   binary: legsc
+
+  goarch:
+  - amd64
+  - arm
+  - arm64
+  - 386
 archives:
 - replacements:
     darwin: Darwin
