@@ -2,8 +2,6 @@
 
 legs-client provides the cli command tool and client daemon for legs product.
 
-more info => https://dev.smf.jp/legs
-
 ## Installation
 Please execute below command. install.sh downloads client tool to current directory.
 ```bash
@@ -20,45 +18,45 @@ $ sudo cp ./legsc /usr/local/bin/legsc
 
 ## Basic Usage
 ```bash
-// show help
+# show help
 $ ./legsc
 
-// set secret key
+# set secret key
 $ ./legsc secret <your secret key>
 
-// export config file with all current/default values
+# export config file with all current/default values
 $ ./legsc export
 
-// specify config file path
+# specify config file path
 $ ./legsc -c path/to/config.yml secret <your secret key>
 
-// start client in foreground
+# start client in foreground
 $ ./legsc start -f
 
-// start client in background
+# start client in background
 $ ./legsc start
 
-// stop client
+# stop client
 $ ./legsc stop
 
-// send data to server
+# send data to server
 $ ./legsc send routing/name '{"value": 1}'
 ```
 
 ## Development
 ```bash
-// get go libraries which use in project.
+# get go libraries which use in project.
 $ make setup
 
-// dep ensure
+# dep ensure
 $ make dep
 
-// start daemon with localconfig and tail log file.
+# start daemon with localconfig and tail log file.
 $ make run
 
-// stop daemon
+# stop daemon
 $ make stop
 
-// format by goimports
+# format by goimports
 $ make fmt
 ```
