@@ -7,7 +7,7 @@ more info => https://dev.smf.jp/legs
 ## Installation
 Please execute below command. install.sh downloads client tool to current directory.
 ```bash
-$ curl --silent https://github.com/raw/iij/legs-client/master/install.sh | sh
+$ curl --silent https://raw.githubusercontent.com/iij/legs-client/master/install.sh | sh
 ```
 After installation, you can show version info by `version` command.
 ```bash
