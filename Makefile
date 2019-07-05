@@ -20,7 +20,7 @@ build: fmt lint
 start:
 	go run main.go start
 run:
-	go run main.go start -f -c ./config.toml
+	go run main.go start -f -c ./conf.toml
 stop:
 	go run main.go stop
 restart:

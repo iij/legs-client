@@ -9,10 +9,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/gorilla/websocket"
 	"github.com/iij/legs-client/config"
 	"github.com/iij/legs-client/daemon/log"
 	"github.com/iij/legs-client/daemon/model"
-	"github.com/gorilla/websocket"
 	message "github.com/iij/legs-message"
 )
 

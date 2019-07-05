@@ -7,8 +7,8 @@ package mock_cache
 import (
 	reflect "reflect"
 
-	model "github.com/iij/legs-client/daemon/model"
 	gomock "github.com/golang/mock/gomock"
+	model "github.com/iij/legs-client/daemon/model"
 )
 
 // MockRoutingCache is a mock of RoutingCache interface
