@@ -1,6 +1,7 @@
 package daemon
 
 import (
+	"crypto/tls"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
@@ -9,12 +10,12 @@ import (
 	"os"
 	"time"
 
+	"github.com/gorilla/websocket"
 	"github.com/iij/legs-client/daemon/context"
 	"github.com/iij/legs-client/daemon/handler/message"
 	"github.com/iij/legs-client/daemon/log"
 	"github.com/iij/legs-client/daemon/model/status"
 	"github.com/iij/legs-client/util"
-	"github.com/gorilla/websocket"
 )
 
 func initConnection(ctx *context.LegscContext) {
@@ -118,6 +119,9 @@ func connectServer(ctx *context.LegscContext, u string, header http.Header) erro
 			return proxyURL, nil
 		}
 	}
+
+	// cert chain is incomplete in ingress controller now
+	dialer.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
 	conn, res, err := dialer.Dial(u, header)
 	if res != nil {
