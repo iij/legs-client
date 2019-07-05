@@ -108,7 +108,7 @@ func setDefaultConfig(config *viper.Viper) {
 
 	tmpDir := filepath.Join("/", "var", "tmp", "legsc")
 
-	config.SetDefault("server", "legs-api.pms.iij.jp")
+	config.SetDefault("server", "api.legs.iij.jp")
 	config.SetDefault("proxy", "")
 	config.SetDefault("secret", "<please set to your secret key>")
 	config.SetDefault("device_name", mac)
