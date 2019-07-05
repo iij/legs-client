@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gorilla/websocket"
 	"github.com/iij/legs-client/config"
 	"github.com/iij/legs-client/daemon/context"
-	"github.com/gorilla/websocket"
 	message "github.com/iij/legs-message"
 	"github.com/spf13/viper"
 )
