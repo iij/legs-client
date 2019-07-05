@@ -5,4 +5,4 @@ tmp/*
 log/*
 .vscode
 dist/*
-config.toml
+conf.toml
