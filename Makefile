@@ -1,8 +1,9 @@
 PID = $(shell cat tmp/legsc.pid)
 
-setup:
+setup-lint:
 	go get -u golang.org/x/lint/golint
 	go get -u golang.org/x/tools/cmd/goimports
+setup: setup-lint
 	go get -u github.com/oxequa/realize
 	go get -u github.com/motemen/gore
 	go get -u github.com/golang/mock/gomock
