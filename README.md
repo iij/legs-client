@@ -2,6 +2,8 @@
 
 legs-client provides the cli command tool and client daemon for legs product.
 
+Legs service document => https://dev.smf.jp/legs/
+
 ## Installation
 Please execute below command. install.sh downloads client tool to current directory.
 ```bash
