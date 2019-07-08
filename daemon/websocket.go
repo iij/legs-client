@@ -1,7 +1,6 @@
 package daemon
 
 import (
-	"crypto/tls"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
@@ -119,9 +118,6 @@ func connectServer(ctx *context.LegscContext, u string, header http.Header) erro
 			return proxyURL, nil
 		}
 	}
-
-	// cert chain is incomplete in ingress controller now
-	dialer.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
 	conn, res, err := dialer.Dial(u, header)
 	if res != nil {
