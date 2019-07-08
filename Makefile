@@ -13,8 +13,6 @@ lint:
 	golint -set_exit_status ./...
 fmt:lint
 	goimports -w .
-vet:
-	go tool vet ./
 build: fmt lint
 	go build -ldflags="-s -w" -o dist/legsc main.go
 start:
