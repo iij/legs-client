@@ -24,5 +24,6 @@ stop:
 	go run main.go stop
 restart:
 	go run main.go restart
-test:
+test: lint
+	bash -c 'diff <(goimports -d .) <(printf "")'
 	env ENV=test go test -cover -race ./...
