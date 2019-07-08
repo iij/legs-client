@@ -1,8 +1,9 @@
 PID = $(shell cat tmp/legsc.pid)
 
-setup:
+setup-lint:
 	go get -u golang.org/x/lint/golint
 	go get -u golang.org/x/tools/cmd/goimports
+setup: setup-lint
 	go get -u github.com/oxequa/realize
 	go get -u github.com/motemen/gore
 	go get -u github.com/golang/mock/gomock
@@ -13,8 +14,6 @@ lint:
 	golint -set_exit_status ./...
 fmt:lint
 	goimports -w .
-vet:
-	go tool vet ./
 build: fmt lint
 	go build -ldflags="-s -w" -o dist/legsc main.go
 start:
@@ -25,5 +24,6 @@ stop:
 	go run main.go stop
 restart:
 	go run main.go restart
-test:
+test: lint
+	bash -c 'diff <(goimports -d .) <(printf "")'
 	env ENV=test go test -cover -race ./...
