@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/iij/legs-client.svg?style=shield)](https://circleci.com/gh/iij/legs-client)
+
 # legs-client
 
 legs-client provides the cli command tool and client daemon for legs product.
