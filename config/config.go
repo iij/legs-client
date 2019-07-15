@@ -59,6 +59,11 @@ func InitConfig(path string) (*Config, error) {
 		switch err := errors.Cause(err).(type) {
 		case viper.ConfigFileNotFoundError:
 			config.SetConfigFile(filepath.Join(home, ".config", "legsc", "conf.toml"))
+
+			if err := util.CreateDir(config.ConfigFileUsed()); err != nil {
+				fmt.Println("cannot create config file dir:", err)
+			}
+
 			return &Config{config}, nil
 		default:
 			return nil, err
