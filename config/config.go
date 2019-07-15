@@ -3,7 +3,6 @@ package config
 import (
 	"fmt"
 	"os"
-	"os/user"
 	"path/filepath"
 	"strings"
 
@@ -18,12 +17,12 @@ type Config struct{ *viper.Viper }
 var home = setHomeDir()
 
 func setHomeDir() string {
-	usr, err := user.Current()
+	home, err := os.UserHomeDir()
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	return usr.HomeDir
+	return home
 }
 
 // InitConfig load config file.
