@@ -65,3 +65,11 @@ func ExpandPath(path string) (string, error) {
 	path = strings.Replace(path, "~", home, 1)
 	return filepath.Abs(path)
 }
+
+// CreateDir creates directory from path in filename.
+func CreateDir(filename string) error {
+	if err := os.MkdirAll(filepath.Dir(filename), 0700); err != nil && !os.IsExist(err) {
+		return err
+	}
+	return nil
+}
