@@ -3,12 +3,13 @@ package daemon
 import (
 	"flag"
 	"fmt"
-	"github.com/iij/legs-client/util"
 	"log"
 	"os"
 	"os/signal"
 	"runtime"
 	"syscall"
+
+	"github.com/iij/legs-client/util"
 
 	"github.com/iij/legs-client/config"
 	"github.com/iij/legs-client/daemon/context"
