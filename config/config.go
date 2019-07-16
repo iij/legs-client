@@ -3,7 +3,6 @@ package config
 import (
 	"fmt"
 	"os"
-	"os/user"
 	"path/filepath"
 	"strings"
 
@@ -18,12 +17,12 @@ type Config struct{ *viper.Viper }
 var home = setHomeDir()
 
 func setHomeDir() string {
-	usr, err := user.Current()
+	home, err := os.UserHomeDir()
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	return usr.HomeDir
+	return home
 }
 
 // InitConfig load config file.
@@ -60,6 +59,11 @@ func InitConfig(path string) (*Config, error) {
 		switch err := errors.Cause(err).(type) {
 		case viper.ConfigFileNotFoundError:
 			config.SetConfigFile(filepath.Join(home, ".config", "legsc", "conf.toml"))
+
+			if err := util.CreateDir(config.ConfigFileUsed()); err != nil {
+				fmt.Println("cannot create config file dir:", err)
+			}
+
 			return &Config{config}, nil
 		default:
 			return nil, err

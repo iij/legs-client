@@ -6,9 +6,10 @@ import (
 	"log"
 	"os"
 	"os/signal"
-	"path/filepath"
 	"runtime"
 	"syscall"
+
+	"github.com/iij/legs-client/util"
 
 	"github.com/iij/legs-client/config"
 	"github.com/iij/legs-client/daemon/context"
@@ -16,7 +17,7 @@ import (
 	legscLog "github.com/iij/legs-client/daemon/log"
 	"github.com/iij/legs-client/daemon/model/status"
 	"github.com/kr/pty"
-	daemon "github.com/sevlyar/go-daemon"
+	"github.com/sevlyar/go-daemon"
 )
 
 var (
@@ -121,28 +122,21 @@ func bootDaemon(configFile string, ctx *context.LegscContext) (pid int) {
 
 func createDirs(ctx *context.LegscContext) (err error) {
 	// create pid file directory
-	if err = createDir(ctx.PidFileName); err != nil {
+	if err = util.CreateDir(ctx.PidFileName); err != nil {
 		return err
 	}
 
 	// create sock file directory
-	if err = createDir(ctx.SockFileName); err != nil {
+	if err = util.CreateDir(ctx.SockFileName); err != nil {
 		return err
 	}
 
 	// create status file directory
-	if err = createDir(ctx.StatusFileName); err != nil {
+	if err = util.CreateDir(ctx.StatusFileName); err != nil {
 		return err
 	}
 
 	return
-}
-
-func createDir(filename string) error {
-	if err := os.MkdirAll(filepath.Dir(filename), 0700); err != nil && !os.IsExist(err) {
-		return err
-	}
-	return nil
 }
 
 func tryPtyOpen() error {
