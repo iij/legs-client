@@ -52,7 +52,7 @@ jobs:
       - restore
       - run:
           name: Run goreleaser
-          command: curl -sL https://git.io/goreleaser | bash -s -- --rm-dist
+          command: curl -sL https://git.io/goreleaser | GOVERSION=$(go version | awk '{print $3}') bash -s -- --rm-dist
 
 workflows:
   test_and_release:

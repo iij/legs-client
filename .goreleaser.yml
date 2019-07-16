@@ -8,7 +8,6 @@ builds:
 -
   env:
   - CGO_ENABLED=0
-  - GOVERSION=$(go version | awk '{print $3}')
 
   ldflags:
   - -s -w -X main.version={{.Version}} -X main.hash={{.ShortCommit}} -X main.builddate={{.Date}} -X main.goversion={{.Env.GOVERSION}}
