@@ -16,26 +16,26 @@ func TestGet_makeSavePath(t *testing.T) {
 	}{
 		"saveTo is a directory": {
 			url:    "http://example.com/test.txt",
-			saveTo: "../../../testdata/",
-			want:   "/.*/app/testdata/test.txt",
+			saveTo: "../../golum/testdata/",
+			want:   "/.*/testdata/test.txt",
 			err:    false,
 		},
 		"saveTo is a file": {
 			url:    "http://example.com/test.txt",
-			saveTo: "../../../testdata/test.txt",
-			want:   "/.*/app/testdata/test.txt",
+			saveTo: "../../golum/testdata/test.txt",
+			want:   "/.*/testdata/test.txt",
 			err:    false,
 		},
 		"URL pathname is dir/filename": {
 			url:    "http://example.com/test/test.txt",
-			saveTo: "../../../testdata/",
-			want:   "/.*/app/testdata/test.txt",
+			saveTo: "../../golum/testdata/",
+			want:   "/.*/testdata/test.txt",
 			err:    false,
 		},
 		"URL pathname is omitted": {
 			url:    "http://example.com",
-			saveTo: "../../../testdata/",
-			want:   "/.*/app/testdata",
+			saveTo: "../../golum/testdata/",
+			want:   "/.*/testdata",
 			err:    false,
 		},
 	}
